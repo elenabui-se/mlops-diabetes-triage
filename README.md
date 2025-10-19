@@ -1,6 +1,6 @@
 MLOps Diabetes Triage
 
-This repository contains the first part of our project — Machine Learning model training and FastAPI deployment.
+This repository contains the first part of our project - Machine Learning model training and FastAPI deployment.
 
 Developed by Artem Matat
 
@@ -10,8 +10,8 @@ Tasks completed:
 - Scaled the dataset using StandardScaler.
 - Saved the model and scaler (model.joblib, scaler.joblib).
 - Built an API with FastAPI (main.py) including endpoints:
-     - /health → API health check
-     - /predict → Predict diabetes progression
+     - /health -> API health check
+     - /predict -> Predict diabetes progression
 - Created a Dockerfile to containerize the project.
 - Generated requirements.txt for dependency management.
 
