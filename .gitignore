@@ -1,0 +1,21 @@
+# Ignore virtual environments
+venv/
+__pycache__/
+
+# Ignore Visual Studio and VS Code files
+.vs/
+.vscode/
+
+# Ignore model artifacts
+*.joblib
+
+# Ignore Python cache and temp files
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.tmp
+
+# Ignore system files
+.DS_Store
+Thumbs.db
