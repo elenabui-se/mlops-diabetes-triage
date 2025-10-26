@@ -61,3 +61,40 @@ python src/train_model.py
 
 # 5. Run API
 uvicorn main:app --reload
+API will be available at → http://127.0.0.1:8000/docs
+
+🩺 Example Requests
+Health Check
+GET /health
+Response:
+
+json
+Copy code
+{"status": "ok", "model_version": "v0.2"}
+Predict Progression
+POST /predict
+Request body:
+
+json
+Copy code
+{
+  "age": 0.02, "sex": -0.044, "bmi": 0.06, "bp": -0.03,
+  "s1": -0.02, "s2": 0.03, "s3": -0.02, "s4": 0.02,
+  "s5": 0.02, "s6": -0.001
+}
+Response:
+
+json
+Copy code
+{"prediction": 235.94}
+🧾 CI/CD Pipeline
+GitHub Actions runs on every push and pull request.
+
+Linting, testing, and model smoke tests are automated.
+
+Tagged versions (v0.1, v0.2) build Docker images and publish to GitHub Container Registry (GHCR).
+
+📦 Releases
+Version	Model	Description
+v0.1	LinearRegression	Baseline model and working API
+v0.2	RandomForestRegressor	Improved accuracy and model performance
