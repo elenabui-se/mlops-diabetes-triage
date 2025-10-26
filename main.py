@@ -3,7 +3,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 from src.predict import load_artifacts, predict as predict_fn
 
-app = FastAPI(title="Diabetes Triage API", version="v0.1")
+app = FastAPI(title="Diabetes Triage API", version="v0.2")
 
 # load model + scaler at startup
 try:
@@ -27,14 +27,14 @@ class DiabetesFeatures(BaseModel):
 
 @app.get("/health")
 def health():
-    return {"status": "ok", "model_version": "v0.1"}
+    return {"status": "ok", "model_version": "v0.2"}
 
 @app.post("/predict")
 def predict_endpoint(features: DiabetesFeatures):
     if model is None or scaler is None:
         raise HTTPException(status_code=500, detail="Model is not loaded")
     try:
-        value = predict_fn(features.dict(), model, scaler)
+        value = predict_fn(features.model_dump(), model, scaler)
         return {"prediction": value}
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Bad input: {e}")
